@@ -1,2 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
 .App {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color: #444;
+    color: cyan;
+}
+
+form {
+    display: flex;
+    flex-flow: column;
+    border: 1px solid black;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color:  cyan;
+    color: black;
+    position: absolute;
+    left: 8rem;
+
+}
+
+pre {
+    margin-left: 20rem;
+    font-size: large;
+    display:inline-flex;
+}
+
+label input {
+    display: block;
+    margin-bottom: 13px;
+    border-radius: 5px;
+    border: thin solid black;
+    padding: .6rem;
+}
+
+
+
+label span {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+button {
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-top: 15px;
+
 }

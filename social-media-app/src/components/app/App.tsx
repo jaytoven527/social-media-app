@@ -2,24 +2,14 @@ import logo from '../../logo.svg';
 import './App.css';
 import {IUser, ILogin, IUserHydrated} from '../../types'
 import {useState, useCallback} from 'react';
+import Input from '../inputs/inputs';
 
-type UserSignupData = {
+export type UserSignupData = {
   email:     string;
   firstName: string;
   lastName:  string;
   password:  string;
 };
-
-function Input ({onChange, ...rest}) {
-  return (
-    <label>
-      <span>{rest.placeholder ?? ''}</span>
-      <input type="text" {...rest} onChange={e => onChange(e.target.value)} />
-    </label>
-  )
-}
-
-
 
 function UserSignupForm({onSubmit}: {onSubmit: (val: UserSignupData) => void}) {
   const [email, setEmail]                       = useState('');
@@ -31,6 +21,7 @@ function UserSignupForm({onSubmit}: {onSubmit: (val: UserSignupData) => void}) {
   return (
     <form onSubmit={e => {
       e.preventDefault();
+
       if(!password) {
         alert('need to add password');
         return;
@@ -56,6 +47,7 @@ interface UsersDict {
 }
 
 
+
 let loginIdCounter  = 0;
 const loginIdMap = {} as {[userId: number]: number};
 const getLoginId = (userId:number) => {
@@ -65,11 +57,11 @@ const getLoginId = (userId:number) => {
 
 let userIdCounter  = 0;
 const userIdMap = {} as {[email: string]: number};
-const getUserId = (email:string) => {
+const getUserId = (email: string) => {
   return userIdMap[email] = userIdMap[email] ?? (userIdCounter++)
 }
 
-function signUserUp(data: UserSignupData) : {
+export function signUserUp(data: UserSignupData) : {
   user: IUser;
   login: ILogin;
 } {
@@ -131,7 +123,7 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState( null as IUser | null);
 
 
-  const submitSignUp = useCallback(data => {
+ const submitSignUp = (data) => {
     const {user, login} = signUserUp(data);
     setUsers({
       ...users,
@@ -139,16 +131,16 @@ function App() {
         ...user,
         login
       }
-    });
-  }, [setState, users]);
+    })
+  }
 
-
+console.log(signUserUp)
   return (
     <div className="App">
       <pre>{JSON.stringify(users, null, 3)}</pre>
       <UserSignupForm onSubmit={submitSignUp}></UserSignupForm>
-
     </div>
+    
   );
 }
 
