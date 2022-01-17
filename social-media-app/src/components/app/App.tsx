@@ -3,8 +3,7 @@ import './App.css';
 import {IUser, ILogin, IUserHydrated} from '../../types'
 import {useState, useCallback} from 'react';
 import Input from '../inputs/inputs';
-import { EmitFlags } from 'typescript';
-import LogInForm from './login/login';
+
 
 export type UserSignupData = {
   email:     string;
@@ -92,7 +91,7 @@ type IUserLoginData  = {
 }
 
 function logUserIn({username, password}:IUserLoginData, usersDict: UsersDict) : IUser{
-  const whichOne :string = 'poopoopeepee';
+  const whichOne :string = 'This is a string';
 
 
   
