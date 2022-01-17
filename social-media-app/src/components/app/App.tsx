@@ -3,6 +3,8 @@ import './App.css';
 import {IUser, ILogin, IUserHydrated} from '../../types'
 import {useState, useCallback} from 'react';
 import Input from '../inputs/inputs';
+import { EmitFlags } from 'typescript';
+import LogInForm from './login/login';
 
 export type UserSignupData = {
   email:     string;
@@ -42,7 +44,7 @@ function UserSignupForm({onSubmit}: {onSubmit: (val: UserSignupData) => void}) {
   )
 }
 
-interface UsersDict {
+export interface UsersDict {
   [email:string]: IUserHydrated
 }
 
@@ -133,8 +135,11 @@ function App() {
       }
     })
   }
+  const username = "jjwood527@yahoo.com";
+  const userEmail = users[username];
 
-console.log(signUserUp)
+
+console.log(userEmail)
   return (
     <div className="App">
       <pre>{JSON.stringify(users, null, 3)}</pre>
