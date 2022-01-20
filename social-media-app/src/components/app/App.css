@@ -8,18 +8,30 @@
     background-color: #444;
     color: cyan;
 }
+    .App > * {
+        margin: 0 2rem;
+    }
+
+.userAction-container {
+    display: flex;
+    flex-flow: row-reverse wrap;
+}
+.userAction-container section:empty {
+    display:none;
+}
+.userAction-container section {
+    border: 1px solid black;
+    padding: 1.5rem;
+    background-color:  cyan;
+    border-radius: 8px;
+} 
 
 form {
     display: flex;
     flex-flow: column;
-    border: 1px solid black;
-    padding: 1.5rem;
-    border-radius: 8px;
-    background-color:  cyan;
     color: black;
-    position: absolute;
-    left: 8rem;
-
+    /* position: absolute; */
+    /* left: 8rem; */
 }
 
 pre {
